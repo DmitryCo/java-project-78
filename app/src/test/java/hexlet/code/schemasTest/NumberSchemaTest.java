@@ -2,13 +2,12 @@ package hexlet.code.schemas;
 
 import hexlet.code.Validator;
 import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-class NumberTest {
+public class NumberSchemaTest {
 
     @Test
-    void numberIsValid() {
+    void testNumberSchema() {
         Validator v = new Validator();
         NumberSchema schema = v.number();
 
