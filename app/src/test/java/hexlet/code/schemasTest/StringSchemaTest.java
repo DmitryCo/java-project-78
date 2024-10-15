@@ -2,16 +2,17 @@ package hexlet.code.schemas;
 
 import hexlet.code.Validator;
 import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringSchemaTest {
     @Test
-    public void testString() {
+    public void testStringSchema() {
         Validator v = new Validator();
         StringSchema schema = v.string();
+
         assertThat(schema.isValid("")).isTrue();
         assertThat(schema.isValid(null)).isTrue();
+
         schema.required();
         assertThat(schema.isValid("")).isFalse();
         assertThat(schema.isValid(null)).isFalse();
