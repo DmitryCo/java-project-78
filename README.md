@@ -1,4 +1,3 @@
-
 # <h1 align="center">Data validator</h1>
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/DmitryCo/java-project-78/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/DmitryCo/java-project-78/actions)
@@ -18,5 +17,30 @@ A data validator is a library that can be used to check the correctness of any d
 
 ### Install:
 ```bash
-    make install
+    make install   
+```
+
+## Run-dist
+```bash
+    make run-dist
+```
+
+## Run
+```bash
+    make run
+```
+
+## Run test
+```bash
+    make test
+```
+
+## Run report
+```bash
+    make report
+```
+
+## Run checkstyle
+```bash
+    make lint
 ```
