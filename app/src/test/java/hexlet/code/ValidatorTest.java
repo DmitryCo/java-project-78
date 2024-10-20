@@ -19,7 +19,7 @@ public class ValidatorTest {
         schemas.put("firstName", v.string().required().minLength(2));
         schemas.put("lastName", v.string().required().minLength(3));
         schemas.put("sex", v.string().required());
-        schemas.put("age", v.number().positive());
+        schemas.put("age", v.number().required().positive());
         schema.shape(schemas);
 
         Map<String, Object> human1 = new HashMap<>();
