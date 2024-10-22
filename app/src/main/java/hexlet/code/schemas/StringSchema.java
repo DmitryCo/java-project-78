@@ -1,12 +1,9 @@
 package hexlet.code.schemas;
 
-import java.util.Objects;
-
 public final class StringSchema extends BaseSchema<String> {
 
     public StringSchema() {
-        addCheck("isAllowedAndEmpty", s -> (s != null) && (!required || !s.isEmpty()));
-        addCheck("isString", Objects::nonNull);
+        super(false);
     }
 
     public StringSchema required() {
