@@ -9,7 +9,9 @@ public abstract class BaseSchema<T> {
     protected Map<String, Predicate<T>> checks = new LinkedHashMap<>();
 
     protected BaseSchema(boolean required) {
-        this.required = required;
+        this.required = false;
+        Predicate<T> nonNull = value -> !(value == null);
+        this.checks.put("nonNull", nonNull);
     }
 
     public void addCheck(String checkName, Predicate<T> testCheck) {
@@ -17,13 +19,11 @@ public abstract class BaseSchema<T> {
     }
 
     public boolean isValid(T objectForValidation) {
-        if (required && objectForValidation == null) {
-            return false;
-        }
-        if (!required && objectForValidation == null) {
+        var isNull = !checks.get("nonNull").test(objectForValidation);
+        if (!required && isNull) {
             return true;
         }
-        for (Predicate<T> check : checks.values()) {
+        for (var check : checks.values()) {
             if (!check.test(objectForValidation)) {
                 return false;
             }
