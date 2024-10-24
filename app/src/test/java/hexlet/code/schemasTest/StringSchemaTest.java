@@ -16,6 +16,7 @@ public class StringSchemaTest {
         schema.required();
         assertThat(schema.isValid("")).isTrue();
         assertThat(schema.isValid(null)).isFalse();
+        assertThat(schema.isValid("hexlet")).isTrue();
         assertThat(schema.isValid("what does the fox say")).isTrue();
         assertThat(schema.contains("wh").isValid("what does the fox say")).isTrue();
         assertThat(schema.contains("whattle").isValid("what does the fox say")).isFalse();
