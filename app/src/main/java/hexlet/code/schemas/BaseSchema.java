@@ -20,8 +20,11 @@ public abstract class BaseSchema<T> {
         if (required && objectForValidation == null) {
             return false;
         }
-        for (String key : checks.keySet()) {
-            if (!checks.get(key).test(objectForValidation)) {
+        if (!required && objectForValidation == null) {
+            return true;
+        }
+        for (Predicate<T> check : checks.values()) {
+            if (!check.test(objectForValidation)) {
                 return false;
             }
         }

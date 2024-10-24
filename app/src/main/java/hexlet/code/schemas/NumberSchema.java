@@ -4,7 +4,6 @@ public final class NumberSchema extends BaseSchema<Integer> {
 
     public NumberSchema() {
         super(false);
-        addCheck("isInteger", i -> i instanceof Integer);
     }
 
     public NumberSchema required() {
