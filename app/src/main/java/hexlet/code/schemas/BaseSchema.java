@@ -25,7 +25,7 @@ public class BaseSchema<T> {
     }
 
     /**
-     * @param <T> Тип объекта для проверки
+     * @param objectForValidation Тип объекта для проверки
      */
     public boolean isValid(T objectForValidation) {
         if (required && objectForValidation == null) {
