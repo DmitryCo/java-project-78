@@ -16,13 +16,14 @@ public class MapSchemaTest {
 
         assertThat(schema1.isValid(null)).isTrue();
 
-        schema1.required();
-        assertThat(schema1.isValid(null)).isFalse();
+        assertThat(schema1.isValid(null)).isTrue();
         assertThat(schema1.isValid(new HashMap<>())).isTrue();
 
         Map<String, String> data = new HashMap<>();
         data.put("key1", "value1");
         assertThat(schema1.isValid(data)).isTrue();
+
+        schema1.required();
 
         schema1.sizeof(2);
         assertThat(schema1.isValid(data)).isFalse();
