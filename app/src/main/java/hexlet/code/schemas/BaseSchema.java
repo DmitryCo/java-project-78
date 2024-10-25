@@ -4,6 +4,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
+/**
+ * @param <T> Тип, которым типизируется класс наследник
+ */
 public class BaseSchema<T> {
     protected boolean required;
     protected Map<String, Predicate<T>> checks;
@@ -13,6 +16,10 @@ public class BaseSchema<T> {
         this.checks = new LinkedHashMap<>();
     }
 
+    /**
+     * @param checkName Ключ - название правила валидации
+     * @param testCheck Значение - правило валидации
+     */
     public void addCheck(String checkName, Predicate<T> testCheck) {
         checks.put(checkName, testCheck);
     }
