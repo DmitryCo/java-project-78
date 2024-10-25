@@ -7,12 +7,12 @@ public final class NumberSchema extends BaseSchema<Integer> {
     }
 
     public NumberSchema required() {
-        required = true;
+        super.required = true;
         return this;
     }
 
     public NumberSchema positive() {
-        addCheck("positive", i -> (Integer) i > 0);
+        addCheck("positive", i -> i == null || i > 0);
         return this;
     }
 

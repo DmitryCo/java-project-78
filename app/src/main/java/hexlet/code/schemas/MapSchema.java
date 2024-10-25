@@ -5,11 +5,11 @@ import java.util.Map;
 public final class MapSchema<T> extends BaseSchema<Map<String, T>> {
 
     public MapSchema() {
-        super(false);
+        super();
     }
 
     public MapSchema<T> required() {
-        required = true;
+        super.required = true;
         return this;
     }
 

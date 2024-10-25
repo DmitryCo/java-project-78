@@ -3,11 +3,12 @@ package hexlet.code.schemas;
 public final class StringSchema extends BaseSchema<String> {
 
     public StringSchema() {
-        super(false);
+        super();
     }
 
     public StringSchema required() {
-        required = true;
+        super.required = true;
+        addCheck("notEmpty", s -> !((String) s).isEmpty());
         return this;
     }
 

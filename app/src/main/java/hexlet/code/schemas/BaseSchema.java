@@ -6,12 +6,11 @@ import java.util.function.Predicate;
 
 public abstract class BaseSchema<T> {
     protected boolean required;
-    protected Map<String, Predicate<T>> checks = new LinkedHashMap<>();
+    protected Map<String, Predicate<T>> checks;
 
-    protected BaseSchema(boolean required) {
+    public BaseSchema() {
         this.required = false;
-        Predicate<T> nonNull = value -> !(value == null);
-        this.checks.put("nonNull", nonNull);
+        this.checks = new LinkedHashMap<>();
     }
 
     public void addCheck(String checkName, Predicate<T> testCheck) {
@@ -19,9 +18,8 @@ public abstract class BaseSchema<T> {
     }
 
     public boolean isValid(T objectForValidation) {
-        var isNull = !checks.get("nonNull").test(objectForValidation);
-        if (!required && isNull) {
-            return true;
+        if (required && objectForValidation == null) {
+            return false;
         }
         for (var check : checks.values()) {
             if (!check.test(objectForValidation)) {
