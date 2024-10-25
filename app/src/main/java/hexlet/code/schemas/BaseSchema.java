@@ -24,6 +24,9 @@ public class BaseSchema<T> {
         checks.put(checkName, testCheck);
     }
 
+    /**
+     * @param <T> Тип объекта для проверки
+     */
     public boolean isValid(T objectForValidation) {
         if (required && objectForValidation == null) {
             return false;
