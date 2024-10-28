@@ -5,7 +5,7 @@ import java.util.Map;
 public final class MapSchema<T> extends BaseSchema<Map<String, T>> {
 
     public MapSchema() {
-        super();
+        addCheck("isRequired", (value -> value != null));
     }
 
     public MapSchema<T> required() {

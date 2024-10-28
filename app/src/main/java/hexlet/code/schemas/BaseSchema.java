@@ -29,9 +29,11 @@ public class BaseSchema<T> {
      * @return Является значение валидным
      */
     public boolean isValid(T objectForValidation) {
-        if (required && objectForValidation == null) {
-            return false;
+        Predicate<T> checkRequired = checks.get("isRequired");
+        if (!required && !checkRequired.test(objectForValidation)) {
+            return true;
         }
+
         for (var check : checks.values()) {
             if (!check.test(objectForValidation)) {
                 return false;
